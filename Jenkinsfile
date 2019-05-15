@@ -77,4 +77,8 @@ node {
     }
   }
 
+  stage('Verifying 200 code') {
+    println("make sure 200 code is returned")
+    sh "curl -f apps.devops.stech.demo"
+  }
 }
