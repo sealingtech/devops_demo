@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: demo-devops-deployment
+  namespace: default
+  labels:
+    app: demo-devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-devops
+  template:
+    metadata:
+      name: demo-devops
+      labels:
+        app: demo-devops
+    spec:
+      containers:
+      - name: demo-devops
+        imagePullPolicy: Always
+        image: {{ .Values.images.centos }}
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
+      dnsPolicy: ClusterFirst

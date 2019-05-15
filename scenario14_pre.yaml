@@ -1,0 +1,51 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: scenario14-pre-deployment
+  namespace: default
+  labels:
+    app: scenario14-pre 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: scenario14-pre 
+  template:
+    metadata:
+      name: scenario14-pre 
+      labels:
+        app: scenario14-pre 
+    spec:
+      containers:
+      - name: scenario14-pre 
+        imagePullPolicy: Always
+        image: gcr.io/original-frame-195400/scenario14-pre 
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
+      dnsPolicy: ClusterFirst
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scenario14-pre-service 
+  namespace: default
+spec:
+  ports:
+  - name: tcp-80-80
+    protocol: TCP
+    port: 80 
+    targetPort: 80 
+  selector:
+    app: scenario14-pre 
+  type: NodePort 
+  sessionAffinity: None
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: scenario14-pre-ingress
+spec:
+  backend:
+    serviceName: scenario14-pre-service
+    servicePort: 80

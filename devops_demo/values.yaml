@@ -1,0 +1,4 @@
+images:
+  centos: centos:latest
+ingress:
+  host: app.devops.stech.demo
