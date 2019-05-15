@@ -1,5 +1,5 @@
 FROM centos:latest
-RUN yum -y update
+#RUN yum -y update
 RUN yum -y install httpd 
 RUN yum -y install php
 RUN rm -rf /var/www/html/*
