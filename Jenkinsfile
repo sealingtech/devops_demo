@@ -16,7 +16,7 @@ node {
   def chart_dir = "$pwd/helm/"
   def tool_name = "devops_demo"
   def container_dir = "$pwd/container/"
-  def custom_image = "images.bro"
+  def custom_image = "images.devops_demo"
   def user_id = ''
   wrap([$class: 'BuildUser']) {
       echo "userId=${BUILD_USER_ID},fullName=${BUILD_USER},email=${BUILD_USER_EMAIL}"
@@ -75,16 +75,6 @@ node {
       println("Some or all Pods failed")
       error("Some or all Pods failed")
     }
-  }
-
-  stage('Verifying engine started on first pod') {
-    def command="kubectl get pods  | grep $user_id-$tool_name-$env.BUILD_ID-$tool_name | awk "+'{\'print $1\'}'+"| head -1"
-    def first_pod=sh(returnStdout: true, script: command)
-
-    def command2="kubectl logs -c bro $first_pod | grep started"
-    println(command2)
-
-    sh(command)
   }
 
 }
