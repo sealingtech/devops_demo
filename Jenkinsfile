@@ -14,9 +14,9 @@ node {
 
   def pwd = pwd()
   def chart_dir = "$pwd/helm/"
-  def tool_name = "devops_demo"
+  def tool_name = "devopsdemo"
   def container_dir = "$pwd/container/"
-  def custom_image = "images.devops_demo"
+  def custom_image = "images.devopsdemo"
   def user_id = ''
   wrap([$class: 'BuildUser']) {
       echo "userId=${BUILD_USER_ID},fullName=${BUILD_USER},email=${BUILD_USER_EMAIL}"
