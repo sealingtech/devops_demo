@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: demo-devops-deployment
+  name: devopsdemo.fullname-deployment
   namespace: default
   labels:
     app: demo-devops

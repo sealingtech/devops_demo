@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: demo-devops-ingress
+  name: {{ include "devopsdemo.fullname" . }}ingress
 spec:
   rules:
   - host: {{ .Values.ingress.host }}
@@ -9,5 +9,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: demo-devops-service
+          serviceName: {{ include "devopsdemo.fullname" . }}-service
           servicePort: 80
