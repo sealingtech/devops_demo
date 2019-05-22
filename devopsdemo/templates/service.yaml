@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "devopsdemo.fullname" . }}-service
+  name: {{ template "devopsdemo.fullname" . }}-service
   namespace: default
 spec:
   ports:
