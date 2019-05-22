@@ -68,8 +68,8 @@ node {
   }
 
   stage('Verifying running pods') {
-    def number_ready=sh(returnStdout: true, script: "kubectl get deploy $user_id-$tool_name-$env.BUILD_ID-deployment  -o jsonpath={.status.numberReady}").trim()
-    def number_scheduled=sh(returnStdout: true, script: "kubectl get deploy $user_id-$tool_name-$env.BUILD_ID-deployment  -o jsonpath={.status.currentNumberScheduled}").trim()
+    def number_ready=sh(returnStdout: true, script: "kubectl get deploy $user_id-$tool_name-$env.BUILD_ID-$tool_name-deployment  -o jsonpath={.status.numberReady}").trim()
+    def number_scheduled=sh(returnStdout: true, script: "kubectl get deploy $user_id-$tool_name-$env.BUILD_ID-$tool_name-deployment  -o jsonpath={.status.currentNumberScheduled}").trim()
 
     println("Ready pods: $number_ready  Scheduled pods: $number_scheduled")
 
