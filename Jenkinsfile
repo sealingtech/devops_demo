@@ -52,7 +52,7 @@ node {
   }
 
   stage('Getting Vulnerability scan data') {
-    sh "if gcloud beta container images list-tags  gcr.io/edcop-dev/$user_id-$tool_name --format=\"value(VULNERABILITIES)\" --filter='tags=$env.BUILD_ID' | grep -q CRITICAL; then exit 10;fi"
+    sh "if gcloud beta container images list-tags  gcr.io/edcop-dev/$user_id-$tool_name --filter='tags=$env.BUILD_ID' | grep -q CRITICAL; then exit 10;fi"
   }
 
   stage('helm lint') {
